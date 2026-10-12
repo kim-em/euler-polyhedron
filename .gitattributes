@@ -1,0 +1,2 @@
+# Preserve the upstream licence's original CRLF line endings.
+vendor/LICENSE whitespace=cr-at-eol
