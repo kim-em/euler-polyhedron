@@ -1,10 +1,9 @@
 Verified locally on 2026-10-13.
 Lean: leanprover/lean4:v4.35.0-rc1
 Mathlib: 09a9e06e4e5ccd5b783f25e52ad3ebecfb1e2d68
-Upstream: 02c67906ae6b427f7c5c73fab0c89e7956a8a3c1
+Upstream dependency: 02c67906ae6b427f7c5c73fab0c89e7956a8a3c1 (subDir: lean)
 Command: ./scripts/verify.sh
-Build completed successfully (2456 jobs).
-All 14 vendored Lean files match the upstream source byte-for-byte.
+Build completed successfully (2457 jobs).
 
 'EulerPolyhedron.polyhedral_convexHull_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
 'EulersGem.IsPolytope.isPolyhedron' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -36,13 +36,13 @@ The verification script builds the complete proof chain and checks Lean's
 axiom reports for the representation theorem, face finiteness, and Euler's
 formula. Only `propext`, `Classical.choice`, and `Quot.sound` are allowed.
 It also rejects proof placeholders and additional axiom declarations in
-all project and vendored Lean sources.
+all project sources and the imported upstream proof modules.
 
 Dependencies are locked in `lean-toolchain` and `lake-manifest.json`:
 
 - Lean: `leanprover/lean4:v4.35.0-rc1`
 - Mathlib: `09a9e06e4e5ccd5b783f25e52ad3ebecfb1e2d68`
-- Vendored Euler proof: `tangentproofs/eulers-gem` at
+- Euler proof dependency: `tangentproofs/eulers-gem` at
   `02c67906ae6b427f7c5c73fab0c89e7956a8a3c1`
 
 ## Proof
@@ -69,8 +69,9 @@ combinatorial realization, or Euler-characteristic assumption.
 
 The Euler argument and face-finiteness proof are reused from Michal Wallace's
 [`tangentproofs/eulers-gem`](https://github.com/tangentproofs/eulers-gem/tree/02c67906ae6b427f7c5c73fab0c89e7956a8a3c1).
-The 14 necessary modules are vendored without modification, with their
-original attribution and licences; see [`vendor/README.md`](vendor/README.md).
+Lake depends directly on upstream's `lean/` package at the audited commit,
+using `subDir = "lean"`. Only the modules needed by the theorem are imported;
+upstream's source, attribution, and licences stay in that dependency.
 The Euler argument follows Lawrence C. Paulson's
 [AFP formalization](https://isa-afp.org/entries/Euler_Polyhedron_Formula.html)
 (2023), ported from HOL Light and crediting Jim Lawrence.
@@ -84,4 +85,4 @@ still defines dually finitely generated cones without proving the
 Minkowski–Weyl equivalence. The new proof uses elementary elimination and
 the audited dependency versions.
 
-New code is under Apache 2.0; upstream licensing notices are preserved.
+New code is under Apache 2.0; the upstream dependency retains its own licensing notices.

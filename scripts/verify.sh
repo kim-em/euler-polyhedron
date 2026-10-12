@@ -5,17 +5,25 @@ lake build
 python3 - <<'PY'
 from pathlib import Path
 import re
-import hashlib
 import subprocess
 
-for line in Path('vendor/SOURCE_SHA256.txt').read_text().splitlines():
-    expected_hash, name = line.split('  ', 1)
-    actual_hash = hashlib.sha256((Path('vendor') / name).read_bytes()).hexdigest()
-    if actual_hash != expected_hash:
-        raise SystemExit(f'Vendored source changed: {name}')
-
+# Check the imported upstream proof modules as well as this project's sources.
+upstream = Path('.lake/packages/eulers-gem/lean')
+modules = set()
+def collect(module):
+    if module in modules:
+        return
+    modules.add(module)
+    source = upstream / (module.replace('.', '/') + '.lean')
+    for line in source.read_text().splitlines():
+        if line.startswith('import '):
+            for dependency in line.split()[1:]:
+                if dependency.startswith('EulersGem.'):
+                    collect(dependency)
+collect('EulersGem.Embed')
+collect('EulersGem.PolytopeFaces')
 sources = [Path('EulerPolyhedron.lean'), *Path('EulerPolyhedron').glob('*.lean'),
-           *Path('vendor/EulersGem').glob('*.lean')]
+           *(upstream / (module.replace('.', '/') + '.lean') for module in modules)]
 for source in sources:
     if re.search(r'\b(sorry|admit|axiom)\b', source.read_text()):
         raise SystemExit(f'Unproved declaration or placeholder in {source}')
