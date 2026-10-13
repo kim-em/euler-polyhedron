@@ -14,3 +14,4 @@ subDir = "lean"
 
 [[lean_lib]]
 name = "EulerPolyhedron"
+leanOptions = { autoImplicit = false, relaxedAutoImplicit = false, weak.linter.mathlibStandardSet = true }

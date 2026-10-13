@@ -1,11 +1,11 @@
 /-
 Copyright (c) 2026 Kim Morrison. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
-Authors: Kim Morrison
+Authors: Kim Morrison, Codex
 -/
 import EulerPolyhedron.Halfspaces
 import EulersGem.Embed
-import Mathlib.Analysis.InnerProductSpace.PiL2
+import EulersGem.PolytopeFaces
 
 /-!
 # Euler's polyhedron formula without a halfspace hypothesis
@@ -15,8 +15,6 @@ The counts below are the actual geometric faces of `p`, using the original
 face-finiteness proof. The only geometric hypotheses are `IsPolytope p` and
 `affDim p = 3`.
 -/
-
-open Set
 
 namespace EulerPolyhedron
 
