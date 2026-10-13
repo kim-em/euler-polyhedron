@@ -99,7 +99,7 @@ theorem IsPolyhedral.linear_eq_zero {F : Type*} [AddCommGroup F] [Module 𝕜 F]
   ext x
   simp only [mem_preimage, mem_singleton_iff, mem_ofPred_eq]
 
-/-- Linear images from a finite real coordinate space preserve polyhedrality. -/
+/-- Linear images from a finite scalar coordinate space preserve polyhedrality. -/
 theorem IsPolyhedral.image_fin {n : ℕ} {s : Set (Fin n → 𝕜)}
     (hs : IsPolyhedral 𝕜 s) (f : (Fin n → 𝕜) →ₗ[𝕜] E) :
     IsPolyhedral 𝕜 (f '' s) := by

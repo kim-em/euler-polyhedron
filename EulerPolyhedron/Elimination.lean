@@ -276,7 +276,7 @@ private def consLinear (n : ℕ) :
     (LinearEquiv.refl 𝕜 E)).toLinearMap.comp
       (LinearEquiv.prodAssoc 𝕜 𝕜 (Fin n → 𝕜) E).symm.toLinearMap
 
-/-- Eliminate any finite number of auxiliary real coordinates. -/
+/-- Eliminate any finite number of auxiliary scalar coordinates. -/
 theorem IsPolyhedral.project_fin (n : ℕ) {s : Set ((Fin n → 𝕜) × E)}
     (hs : IsPolyhedral 𝕜 s) :
     IsPolyhedral 𝕜 {x | ∃ w : Fin n → 𝕜, (w, x) ∈ s} := by

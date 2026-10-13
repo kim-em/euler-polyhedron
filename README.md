@@ -37,6 +37,14 @@ exactly `EulersGem.closedHalfspace a b = {x | ⟪a, x⟫ ≤ b}`. The algebraic
 elimination and representation layers work over any linearly ordered field;
 only the geometric bridge uses real inner products.
 
+All of these mathematical additions are proposed upstream in
+[`eulers-gem` PR #2](https://github.com/tangentproofs/eulers-gem/pull/2).
+The PR also removes the supplied halfspace presentation from upstream's public
+Euler and Platonic-solid results. Once merged, upstream will contain all the
+mathematical results added here, making this companion repository redundant
+as a formalization. The dependency below remains pinned to the original
+audited upstream commit until that integration is merged.
+
 ## Build and verify
 
 Install [elan](https://github.com/leanprover/elan) and Python 3.11 or newer, then run:
